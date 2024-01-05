@@ -7,4 +7,4 @@ const seatSchema = mongoose.Schema({
 
 const seatModel = mongoose.model("Seats", seatSchema); 
 
-module.exports = { seatModel }; 
+module.exports = { seatModel };  

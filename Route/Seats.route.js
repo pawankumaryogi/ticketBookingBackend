@@ -83,10 +83,10 @@ seatRouter.post("/reserve", count, async(req, res) => {
             console.log(isEmpty[j].seatNumber); 
             reserved.push(isEmpty[j].seatNumber); 
             await seatModel.findByIdAndUpdate({_id : isEmpty[j]._id}, {isBooked : true}); 
-        }
+        } 
 
         res.status(200).send(reserved);      // Response to the request with seat numbers which has been booked.
-    }
+    } 
 });
 
 // PATCH request 
@@ -94,7 +94,8 @@ seatRouter.post("/reserve", count, async(req, res) => {
 
 seatRouter.patch("/reset", async(req, res) => { 
     try { 
-        await seatModel.deleteMany({});                  // Updating the data of the seats which are booked. 
+        await seatModel.updateMany({}, { isBooked: false }  );                  // Updating the data of the seats which are booked. 
+        // await seatModel.deleteMany({}  );                  // Updating the data of the seats which are booked. 
         res.status(200).send({ "message" : "All the seats are available for booking." });    // Response to the request with a success message.
     } catch (error) { 
         console.log(error); 

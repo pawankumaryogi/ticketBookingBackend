@@ -11,4 +11,4 @@ const count =  (req, res, next) => {
     }
 }; 
 
-module.exports = { count }; 
+module.exports = { count };  

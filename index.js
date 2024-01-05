@@ -4,30 +4,30 @@ require("dotenv").config();
 const cors = require("cors"); 
 const { connection } = require("./db"); 
 const { seatRouter } = require("./Route/Seats.route"); 
-// const { seatModel } = require("./Model/Seat.model");      // Uncomment if wnat to add more seats to the database.
+const { seatModel } = require("./Model/Seat.model");      // Uncomment if wnat to add more seats to the database.
 
 const app = express(); 
-
+ 
 app.use(express.json()); 
 app.use(cors()); 
 app.get('/', (req, res) => { 
     // for (let i=1;i<=80;i++){ 
     // const seat = new seatModel({seatNumber : i, isBooked : false}); 
     // seat.save();  
-// }
+// } 
 
     res.send('Welcome From Mr Pawan Yogi') 
   })
-app.use("/seats", seatRouter); 
+app.use("/seats", seatRouter);  
 
 // Below code create new n-seats data as per the requirement. If want to add more seats to the database uncomment the below code and change the value of i as per the requirement.  
-// for (let i=1;i<=80;i++){ 
-//     const seat = new seatModel({seatNumber : i, isBooked : false}); 
-//     seat.save(); 
-// }
+for (let i=1;i<=80;i++){ 
+    const seat = new seatModel({seatNumber : i, isBooked : false}); 
+    seat.save(); 
+}
 
 
-app.listen(process.env.Port, async() => { 
+app.listen(process.env.Port, async() => {  
     try { 
         await connection; 
         console.log("App is connected to DB"); 
