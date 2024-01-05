@@ -28,10 +28,10 @@ app.get('/', (req, res) => {
 app.use("/seats", seatRouter);  
 
 // Below code create new n-seats data as per the requirement. If want to add more seats to the database uncomment the below code and change the value of i as per the requirement.  
-for (let i=1;i<=80;i++){ 
-    const seat = new seatModel({seatNumber : i, isBooked : false}); 
-    seat.save(); 
-}
+// for (let i=1;i<=80;i++){ 
+//     const seat = new seatModel({seatNumber : i, isBooked : false}); 
+//     seat.save(); 
+// }
 
 
 app.listen(process.env.Port, async() => {  
