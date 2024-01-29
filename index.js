@@ -9,12 +9,14 @@ const { seatModel } = require("./Model/Seat.model");      // Uncomment if wnat t
 const app = express(); 
  
 app.use(express.json()); 
+// app.use(cors()); 
 
 app.use((req, res, next) => {
     res.setHeader('Access-Control-Allow-Origin', 'https://ticket-booking-nu.vercel.app');
+    res.setHeader('Access-Control-Allow-Methods', 'GET, POST, PUT, DELETE');
+    res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
     next();
-});
-// app.use(cors()); 
+  });
 app.get('/', (req, res) => { 
     // for (let i=1;i<=80;i++){ 
     // const seat = new seatModel({seatNumber : i, isBooked : false}); 
