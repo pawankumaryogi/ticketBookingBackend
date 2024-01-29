@@ -9,10 +9,12 @@ const { seatModel } = require("./Model/Seat.model");      // Uncomment if wnat t
 const app = express(); 
  
 app.use(express.json()); 
-app.use(cors({
-    origin: '*'
-  }));
 
+app.use((req, res, next) => {
+    res.setHeader('Access-Control-Allow-Origin', 'https://ticket-booking-nu.vercel.app');
+    next();
+});
+// app.use(cors()); 
 app.get('/', (req, res) => { 
     // for (let i=1;i<=80;i++){ 
     // const seat = new seatModel({seatNumber : i, isBooked : false}); 
